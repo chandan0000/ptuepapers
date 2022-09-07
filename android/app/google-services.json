@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "985942742649",
+    "project_id": "ptupapers-a7631",
+    "storage_bucket": "ptupapers-a7631.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985942742649:android:9579585149a3051ebd66a8",
+        "android_client_info": {
+          "package_name": "com.example.ptuepapers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985942742649-7k4g0svbr76vn5hmv52pumkrqrb3d7js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnR9AXSfSAsQQ_2D_sosDfNhHmhYYuVr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985942742649-7k4g0svbr76vn5hmv52pumkrqrb3d7js.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
