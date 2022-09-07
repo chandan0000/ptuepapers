@@ -149,17 +149,17 @@ class _SignUpState extends State<SignUp> {
                         return TextFormField(
                           controller: _confirmPasswordController,
                           keyboardType: TextInputType.visiblePassword,
-                          obscureText: _obsecuredPassword.value,
+                          obscureText: _obsecuredPassword2.value,
                           focusNode: confirmPasswordFocusNode,
                           obscuringCharacter: '*',
                           decoration: InputDecoration(
                             suffixIcon: InkWell(
                               onTap: () {
-                                _obsecuredPassword.value =
-                                    !_obsecuredPassword.value;
+                                _obsecuredPassword2.value =
+                                    !_obsecuredPassword2.value;
                               },
                               child: Icon(
-                                _obsecuredPassword.value
+                                _obsecuredPassword2.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility,
                               ),
