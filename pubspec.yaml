@@ -44,12 +44,15 @@ dependencies:
   shared_preferences: ^2.0.15
   firebase_core: ^1.21.1
   firebase_auth: ^3.7.0
-  another_flushbar: ^1.10.29
+ 
   fluttertoast: ^8.0.9
   go_router: ^4.4.1
   flutter_riverpod: ^1.0.4
   flutter_bloc: ^8.1.1
   url_strategy: ^0.2.0
+  awesome_dialog: ^3.0.0
+  google_sign_in: ^5.4.1
+ 
  
 
 dev_dependencies:

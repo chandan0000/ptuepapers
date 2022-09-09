@@ -1,9 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:ptuepapers/controller/authcontroller.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Forgetpassword extends StatelessWidget {
   // final String name;
-  const Forgetpassword({Key? key}) : super(key: key);
+  Forgetpassword({Key? key}) : super(key: key);
+  final TextEditingController _emailController = TextEditingController();
+  AuthController auth = AuthController();
+  dispose() {
+    _emailController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +44,7 @@ class Forgetpassword extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
+                controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   suffixIcon: Icon(Icons.email),
@@ -52,7 +61,11 @@ class Forgetpassword extends StatelessWidget {
                 height: 50,
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    auth.forgetPassword(
+                        email: _emailController.text, context: context);
+                   
+                  },
                   child: const Text('Login'),
                 ),
               ),

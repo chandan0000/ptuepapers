@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ptuepapers/config/routes/routesname.dart';
+import 'package:ptuepapers/controller/authcontroller.dart';
+import 'package:ptuepapers/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class SignUp extends StatefulWidget {
@@ -23,6 +26,7 @@ class _SignUpState extends State<SignUp> {
   final ValueNotifier<bool> _obsecuredPassword = ValueNotifier<bool>(true);
   final ValueNotifier<bool> _obsecuredPassword2 = ValueNotifier<bool>(true);
   final _formKey = GlobalKey<FormState>();
+  AuthController auth = AuthController();
 
   @override
   void dispose() {
@@ -72,6 +76,7 @@ class _SignUpState extends State<SignUp> {
                   TextFormField(
                     focusNode: emailFocusNode,
                     keyboardType: TextInputType.emailAddress,
+                    controller: _emailController,
                     decoration: const InputDecoration(
                       suffixIcon: Icon(Icons.email),
 
@@ -191,8 +196,11 @@ class _SignUpState extends State<SignUp> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           // );
-
-                          GoRouter.of(context).go(RoutesName.bottomNavBar);
+                          auth.signUp(
+                              email: _emailController.text,
+                              cPassword: _passwordController.text,
+                              context: context);
+                          // GoRouter.of(context).go(RoutesName.bottomNavBar);
                         }
                       },
                       child: const Text('Sign Up'),
@@ -225,7 +233,16 @@ class _SignUpState extends State<SignUp> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          UserCredential credential =
+                              await AuthController().signInWithGoogle();
+                          if (credential != null) {
+                            GoRouter.of(context).go(RoutesName.bottomNavBar);
+                          } else {
+                            Utils.snackBar(
+                                'Sometime wrong ', context, Colors.red);
+                          }
+                        },
                         icon: const FaIcon(
                           FontAwesomeIcons.google,
                           size: 30,
@@ -233,13 +250,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                       const SizedBox(
                         width: 20,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const FaIcon(
-                          FontAwesomeIcons.github,
-                          size: 30,
-                        ),
                       ),
                     ],
                   ),

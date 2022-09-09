@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ptuepapers/config/routes/routesname.dart';
+import 'package:ptuepapers/controller/authcontroller.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../utils/utils.dart';
@@ -143,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: InkWell(
                       onTap: () {
                         // context.go(RoutesName.forgetPassowrd,
-                        //     extra: {'name': 'chandan'});
+                        // extra: {'name': 'chandan'});
                         GoRouter.of(context).pushNamed(
                           RoutesName.forgetPassowrd,
                         );
@@ -161,7 +163,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            GoRouter.of(context).go(RoutesName.bottomNavBar);
+                            AuthController().loginWithEmail(
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                                context: context);
+                            // GoRouter.of(context).go(RoutesName.bottomNavBar);
                           }
                         },
                         child: 'Login'.text.white.center.bold.make()),
@@ -188,28 +194,33 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
 
                   //icon Button
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const FaIcon(
-                          FontAwesomeIcons.google,
-                          size: 30,
+                  Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () async {
+                            UserCredential credential =
+                                await AuthController().signInWithGoogle();
+                            if (credential != null) {
+                              GoRouter.of(context).go(RoutesName.bottomNavBar);
+                            } else {
+                              Utils.snackBar(
+                                  'Sometime wrong ', context, Colors.red);
+                            }
+                          },
+                          icon: const FaIcon(
+                            FontAwesomeIcons.google,
+                            size: 30,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const FaIcon(
-                          FontAwesomeIcons.github,
-                          size: 30,
+                        const SizedBox(
+                          width: 20,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {
