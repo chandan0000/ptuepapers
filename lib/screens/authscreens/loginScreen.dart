@@ -142,8 +142,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.topRight,
                     child: InkWell(
                       onTap: () {
-                        GoRouter.of(context)
-                            .pushNamed(RoutesName.forgetPassowrd);
+                        // context.go(RoutesName.forgetPassowrd,
+                        //     extra: {'name': 'chandan'});
+                        GoRouter.of(context).pushNamed(
+                          RoutesName.forgetPassowrd,
+                        );
                       },
                       child: 'Forgot Password?'.text.blue500.bold.fade.make(),
                     ),

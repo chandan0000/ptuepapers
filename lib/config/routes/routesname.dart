@@ -1,7 +1,6 @@
-class RoutesName{
-  static const  String signIn = '/signin';
-  static const  String signUp = '/signup';
-  static const  String forgetPassowrd = '/forgetpassowrd';
-  static const  String bottomNavBar = '/bottomnavbar';
-
+class RoutesName {
+  static const String signIn = '/';
+  static const String signUp = '/signup';
+  static const String forgetPassowrd = '/forgetpassword';
+  static const String bottomNavBar = '/bottomnavbar';
 }

@@ -32,12 +32,15 @@ class RouteConfig {
         ),
       ),
       GoRoute(
-        name: RoutesName.forgetPassowrd,
-        path: '/forgetpassword',
-        builder: (context, state) => Forgetpassword(
-          key: state.pageKey,
-        ),
-      ),
+          name: RoutesName.forgetPassowrd,
+          path: '/forgetpassword',
+          builder: (context, state) {
+            // final parms = state.extra! as Map<String, Object>;
+            // final name = parms['name'] as String;
+            return Forgetpassword(
+              key: state.pageKey,
+            );
+          }),
       GoRoute(
         name: RoutesName.bottomNavBar,
         path: '/bottomnavbar',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Forgetpassword extends StatelessWidget {
+  // final String name;
   const Forgetpassword({Key? key}) : super(key: key);
 
   @override
