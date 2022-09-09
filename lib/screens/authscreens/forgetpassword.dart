@@ -14,7 +14,7 @@ class Forgetpassword extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 100,
+                height: 140,
               ),
               VxCircle(
                 radius: 90,

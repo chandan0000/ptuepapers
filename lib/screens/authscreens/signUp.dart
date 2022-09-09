@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ptuepapers/screens/authscreens/loginScreen.dart';
-import 'package:ptuepapers/screens/bottomnavbar/bottomnavBar.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ptuepapers/config/routes/routesname.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class SignUp extends StatefulWidget {
@@ -192,10 +192,7 @@ class _SignUpState extends State<SignUp> {
                         if (_formKey.currentState!.validate()) {
                           // );
 
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const BottomNavBar()));
+                          GoRouter.of(context).go(RoutesName.bottomNavBar);
                         }
                       },
                       child: const Text('Sign Up'),
@@ -248,12 +245,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.popUntil(context, (route) => route.isFirst);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()),
-                      );
+                      GoRouter.of(context).go(RoutesName.signIn);
                     },
                     child: const Text.rich(TextSpan(
                       text: 'I have an already account? ',

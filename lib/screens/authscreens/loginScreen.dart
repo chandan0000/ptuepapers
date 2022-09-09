@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ptuepapers/screens/authscreens/forgetpassword.dart';
-import 'package:ptuepapers/screens/authscreens/signUp.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ptuepapers/config/routes/routesname.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../utils/utils.dart';
-import '../bottomnavbar/bottomnavBar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -143,10 +142,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.topRight,
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Forgetpassword()));
+                        GoRouter.of(context)
+                            .pushNamed(RoutesName.forgetPassowrd);
                       },
                       child: 'Forgot Password?'.text.blue500.bold.fade.make(),
                     ),
@@ -159,26 +156,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 50,
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          // If the form is valid, display a snackbar. In the real world,
-                          // you'd often call a server or save the information in a database.
-                          // ScaffoldMessenger.of(context).showSnackBar(
-                          //   const SnackBar(content: Text('Processing Data')),
-                          // );
-
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const BottomNavBar()));
-                        }
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const BottomNavBar()));
-                      },
-                      child: const Text('Login'),
-                    ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            GoRouter.of(context).go(RoutesName.bottomNavBar);
+                          }
+                        },
+                        child: 'Login'.text.white.center.bold.make()),
                   ),
                   const SizedBox(
                     height: 30,
@@ -227,11 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignUp(),
-                          ));
+                      GoRouter.of(context).go(RoutesName.signUp);
                     },
                     child: const Text.rich(TextSpan(
                       text: 'Don\'t have an account? ',

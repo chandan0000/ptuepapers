@@ -1,1 +1,1 @@
-class AuthServices {}
+// class AuthServices extends GetxController {}
