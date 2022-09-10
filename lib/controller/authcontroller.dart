@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -26,12 +24,10 @@ class AuthController {
           Utils.snackBar(
               'You are succesfully Create Account', context, Colors.green);
         } else {
-          log('User not Created');
           Utils.snackBar('User not Created', context, Colors.red);
         }
       }
     } on FirebaseException catch (e) {
-      log(e.code);
       Utils.snackBar(e.code, context, Colors.red);
     }
   }
@@ -54,7 +50,6 @@ class AuthController {
         }
       }
     } on FirebaseException catch (e) {
-      log(e.code);
       Utils.snackBar(e.code, context, Colors.red);
     }
   }
@@ -66,14 +61,18 @@ class AuthController {
     try {
       if (email.isNotEmpty) {
         await _auth.sendPasswordResetEmail(email: email.trim());
+
+        Utils.snackBar('Password Reset Link Sent Please check Email', context,
+            Colors.green);
       }
-      log(email);
-      Utils.snackBar(
-          'Password Reset Link Sent Please check Email', context, Colors.green);
     } on FirebaseException catch (e) {
-      log(e.code);
       Utils.snackBar(e.code, context, Colors.red);
     }
+  }
+
+  // ! google signout
+  void signOutGoogle() async {
+    await GoogleSignIn().signOut();
   }
 
   //!signOut
@@ -99,4 +98,6 @@ class AuthController {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+
 }

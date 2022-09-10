@@ -28,4 +28,11 @@ class UtilsController extends ChangeNotifier {
     currentIndex = index;
     notifyListeners();
   }
+
+  double progress = 0;
+//! progress
+  void progreessBar(double value) {
+    progress = value;
+    notifyListeners();
+  }
 }

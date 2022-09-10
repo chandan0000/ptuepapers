@@ -58,10 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  'Welcome To Ptupapers'.text.size(20).bold.make().shimmer(
-                        primaryColor: Colors.black,
-                        secondaryColor: Colors.white,
-                      ),
+                  'Welcome To Ptupapers'.text.size(20).bold.make(),
                   const SizedBox(
                     height: 30,
                   ),

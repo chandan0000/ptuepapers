@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:ptuepapers/controller/authcontroller.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -36,10 +34,7 @@ class Forgetpassword extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              'Welcome To Ptupapers'.text.size(20).bold.make().shimmer(
-                    primaryColor: Colors.black,
-                    secondaryColor: Colors.white,
-                  ),
+              'Welcome To Ptupapers'.text.size(20).bold.make(),
               const SizedBox(
                 height: 30,
               ),
@@ -62,9 +57,10 @@ class Forgetpassword extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () {
-                    auth.forgetPassword(
-                        email: _emailController.text, context: context);
-                   
+                    if (_emailController.text.isNotEmpty) {
+                      auth.forgetPassword(
+                          email: _emailController.text, context: context);
+                    }
                   },
                   child: const Text('Login'),
                 ),

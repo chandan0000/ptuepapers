@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ptuepapers/config/routes/routes.dart';
 import 'package:ptuepapers/config/themes/themes.dart';
+import 'package:ptuepapers/controller/authstat.dart';
 import 'package:ptuepapers/controller/utilscontroller.dart';
 
 import 'firebase_options.dart';
@@ -25,7 +26,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => UtilsController(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AuthState(),
+        ),
       ],
       child: Consumer<UtilsController>(
         builder: ((context, value, child) => MaterialApp.router(
@@ -41,6 +45,7 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+  
 }
 
 

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:ptuepapers/controller/utilscontroller.dart';
 import "package:velocity_x/velocity_x.dart";
+
+import '../../config/routes/routesname.dart';
 
 class study extends StatelessWidget {
   const study({super.key});
@@ -73,7 +76,11 @@ class study extends StatelessWidget {
                   ),
                   //2nd
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      GoRouter.of(context).pushNamed(
+                          RoutesName.inAppBrowserPage,
+                          queryParams: {'urlweb': 'https://www.ptuexam.com/'});
+                    },
                     child: SizedBox(
                       height: 150,
                       width: 1000,
@@ -103,7 +110,12 @@ class study extends StatelessWidget {
                     height: 10,
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      GoRouter.of(context)
+                          .pushNamed(RoutesName.inAppBrowserPage, queryParams: {
+                        'urlweb': 'https://www.ptuexam.com/PublicAnnoucements'
+                      });
+                    },
                     child: SizedBox(
                       height: 150,
                       width: 1000,
