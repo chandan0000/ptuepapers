@@ -25,11 +25,9 @@ class _InAppBrowserPageState extends State<InAppBrowserPage> {
         child: Stack(
           children: [
             InAppWebView(
-          
               initialUrlRequest: URLRequest(url: Uri.parse(widget.urlWeb)),
               onWebViewCreated: (InAppWebViewController controller) {
                 webView = controller;
-                
               },
               onProgressChanged:
                   (InAppWebViewController controller, int progress) {

@@ -11,26 +11,11 @@ import 'package:ptuepapers/screens/bottomnavbar/bottomnavBar.dart';
 import '../../screens/authscreens/forgetpassword.dart';
 import 'ErrorScreen.dart';
 
-AuthState auth = AuthState();
-
+ 
 class RouteConfig {
-  // RouteConfig(this.loginState);
-  // final LoginState loginState;
-
-  bool isLog = auth.isLoggedIn;
-
   static final GoRouter router = GoRouter(
-    // debugLogDiagnostics: true,
     urlPathStrategy: UrlPathStrategy.path,
-    // refreshListenable: AuthState(),
-
     initialLocation: '/',
-    // redirect: (state) {
-    //   final loggIn = auth.isLoggedIn;
-    //   final isLogging = state.location == '/';
-    //   return null;
-    // },
-
     routes: [
       GoRoute(
         name: RoutesName.signIn,
@@ -66,25 +51,12 @@ class RouteConfig {
           key: state.pageKey,
           child: const LoginScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              RotationTransition(
-            turns: animation,
+              ScaleTransition(
+            scale: animation,
             child: Forgetpassword(),
           ),
         ),
-      )
-      // GoRoute(
-      //   name: RoutesName.forgetPassowrd,
-      //   path: '/forgetpassword',
-      //   builder: (context, state) {
-      // final parms = state.extra! as Map<String, Object>;
-      // final name = parms['name'] as String;
-      //     return Forgetpassword(
-      //       key: state.pageKey,
-      //     );
-      //   },
-
-      // ),
-      ,
+      ),
       GoRoute(
           name: RoutesName.bottomNavBar,
           path: '/bottomnavbar',
@@ -145,3 +117,44 @@ class RouteConfig {
     // redirect to the login page if the user is not logged in
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // GoRoute(
+      //   name: RoutesName.forgetPassowrd,
+      //   path: '/forgetpassword',
+      //   builder: (context, state) {
+      // final parms = state.extra! as Map<String, Object>;
+      // final name = parms['name'] as String;
+      //     return Forgetpassword(
+      //       key: state.pageKey,
+      //     );
+      //   },
+
+      // ),
+
+
+// debugLogDiagnostics: true,
+       // redirect: (state) {
+    //   final loggIn = auth.isLoggedIn;
+    //   final isLogging = state.location == '/';
+    //   return null;
+    // },
